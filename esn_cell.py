@@ -46,7 +46,7 @@ class ESNCell(rnn_cell.RNNCell):
     self._leaky = leaky
     self._activation = activation
 
-    def _wr_initializer(shape, dtype):
+    def _wr_initializer(shape, dtype, partition_info=None):
       wr = wr_init(shape, dtype=dtype)
 
       connectivity_mask = math_ops.cast(
