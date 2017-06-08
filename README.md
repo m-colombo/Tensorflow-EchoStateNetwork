@@ -1,3 +1,3 @@
 # Tensorflow-EchoStateNetwork
 Echo state network implementation on tensorflow.
-Tested on 0.12.1
+Tested on 1.2.0rc2

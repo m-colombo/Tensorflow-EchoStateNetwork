@@ -22,11 +22,12 @@ class ESNCellTest(tf.test.TestCase):
       state, _ = cell(inputs[i, :, :], state)
 
     with self.test_session() as sess:
-      sess.run(tf.initialize_all_variables())
-      final_states = sess.run([state])
+      sess.run(tf.global_variables_initializer())
 
-    expected_final_states = [[[0.75952783, -0.96463442, 0.72289173, 0.38016839],
-                             [0.82451594, -0.99358452, 0.86248011, 0.24540841]]]
+      final_states = sess.run(state)
+
+    expected_final_states = [[-0.56735968, -0.21625957,  0.69647415, -0.91361383],
+                             [-0.22654705, -0.15751715,  0.85077971, -0.89757621]]
 
     self.assertAllClose(final_states, expected_final_states)
 

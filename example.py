@@ -18,7 +18,7 @@ def MackeyGlass(tr_size=500, washout_size=50, units=30, connectivity=0.2, scale=
   washed = tf.squeeze(tf.slice(outputs, [0, washout_size, 0], [-1, -1, -1]))
 
   with tf.Session() as S:
-    S.run(tf.initialize_all_variables())
+    S.run(tf.global_variables_initializer())
 
     print("Computing embeddings...")
     res = S.run(washed)

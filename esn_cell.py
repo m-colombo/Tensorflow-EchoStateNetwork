@@ -1,4 +1,4 @@
-from tensorflow.python.ops import rnn_cell
+from tensorflow.python.ops import rnn_cell_impl
 from tensorflow.python.ops import init_ops
 from tensorflow.python.ops import math_ops
 from tensorflow.python.ops import random_ops
@@ -7,7 +7,7 @@ from tensorflow.python.ops import variable_scope as vs
 from tensorflow.python.framework.ops import convert_to_tensor
 
 
-class ESNCell(rnn_cell.RNNCell):
+class ESNCell(rnn_cell_impl.RNNCell):
   """Echo State Network Cell.
 
     Based on http://www.faculty.jacobs-university.de/hjaeger/pubs/EchoStatesTechRep.pdf
@@ -55,7 +55,7 @@ class ESNCell(rnn_cell.RNNCell):
             connectivity),
         dtype)
 
-      wr = math_ops.mul(wr, connectivity_mask)
+      wr = math_ops.multiply(wr, connectivity_mask)
 
       wr_norm2 = math_ops.sqrt(math_ops.reduce_sum(math_ops.square(wr)))
 
@@ -105,8 +105,8 @@ class ESNCell(rnn_cell.RNNCell):
                            trainable=False, initializer=self._wr_initializer)
       b = vs.get_variable("Bias", [self._num_units], dtype=dtype, trainable=False, initializer=self._bias_initializer)
 
-      in_mat = array_ops.concat(1, [inputs, state])
-      weights_mat = array_ops.concat(0, [win, wr])
+      in_mat = array_ops.concat([inputs, state], axis=1)
+      weights_mat = array_ops.concat([win, wr], axis=0)
 
       output = (1 - self._leaky) * state + self._leaky * self._activation(math_ops.matmul(in_mat, weights_mat) + b)
 
