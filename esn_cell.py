@@ -1,4 +1,4 @@
-from tensorflow.python.ops import rnn_cell_impl
+from tensorflow.contrib import rnn
 from tensorflow.python.ops import init_ops
 from tensorflow.python.ops import math_ops
 from tensorflow.python.ops import random_ops
@@ -7,7 +7,7 @@ from tensorflow.python.ops import variable_scope as vs
 from tensorflow.python.framework.ops import convert_to_tensor
 
 
-class ESNCell(rnn_cell_impl.RNNCell):
+class ESNCell(rnn.RNNCell):
   """Echo State Network Cell.
 
     Based on http://www.faculty.jacobs-university.de/hjaeger/pubs/EchoStatesTechRep.pdf
