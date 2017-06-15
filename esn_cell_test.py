@@ -26,8 +26,8 @@ class ESNCellTest(tf.test.TestCase):
 
       final_states = sess.run(state)
 
-    expected_final_states = [[-0.56735968, -0.21625957,  0.69647415, -0.91361383],
-                             [-0.22654705, -0.15751715,  0.85077971, -0.89757621]]
+    expected_final_states = [[ 0.92921495, 0.98763743, -0.2748242, 0.71902763],
+                             [ 0.99235595, 0.99932796, 0.41149584, 0.9159835 ]]
 
     self.assertAllClose(final_states, expected_final_states)
 
