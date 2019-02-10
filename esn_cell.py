@@ -16,7 +16,9 @@ class ESNCell(rnn_cell_impl.RNNCell):
     thus neither are feedback from readout to the reservoir (a quite common technique).
 
     Here a practical guide to use Echo State Networks:
-    http://minds.jacobs-university.de/sites/default/files/uploads/papers/PracticalESN.pdf
+      L., Mantas. "A practical guide to applying echo state networks." N
+      eural networks: Tricks of the trade. Springer, Berlin, Heidelberg, 2012. 659-686.
+    https://pdfs.semanticscholar.org/11bb/0941b1f6088783e26d7f9603789ee1db7faa.pdf
 
     Since at the moment TF doesn't provide a way to compute spectral radius
     of a matrix the echo state property necessary condition `max(eig(W)) < 1` is approximated
